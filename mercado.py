@@ -1,22 +1,35 @@
-def get_int():
+def get_int(texto = "Digite um número"):
     while(True):
         try: 
-            numero = int(input("Digite um número: "))
+            numero = int(input(texto))
             return numero
         except ValueError: 
             print("Você não digitou um número!! :(")
 
-def get_float():
+def get_float(texto = "Digite um número"):
     while(True):
         try: 
-            numero = float(input("Digite um número: "))
+            numero = float(input(texto))
             return numero
         except ValueError: 
             print("Você não digitou um número!! :(")
 
+def passarCompras():
+    valorProdutos = [] 
+    numeroDigitado = get_float("Digite o valor do produto ")
+    while(numeroDigitado != 0):
+        valorProdutos.append(numeroDigitado)
+        numeroDigitado = get_float("Digite o valor do próximo produto ")
+    return valorProdutos
+
+        
 def main(): 
-    numeroDigitado =  get_int()
-    print(numeroDigitado)
+    print("=======Mercado do João=======")
+    print("Digite os valores dos produtos. Para finalizar, digite 0")
+    compras = passarCompras()
+    print(compras)
+    print(f'O valor total das compras é R$ {sum(compras)}')
+    
 
 if __name__ == '__main__':
     main()
